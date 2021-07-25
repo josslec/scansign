@@ -1,0 +1,2 @@
+#!/bin/bash
+php /usr/local/bin/scansign/scansign.php $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS

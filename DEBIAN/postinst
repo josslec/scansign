@@ -1,0 +1,27 @@
+#!/bin/bash
+
+sed -i_bak 's/rights="none" pattern="PDF"/rights="read | write" pattern="PDF"/' /etc/ImageMagick-*/policy.xml
+
+# For every user in /home/ ...
+for HOME_U in /home/*?; do
+
+	# Obtain the username
+	USER=$( basename ${HOME_U} )
+
+	# Making sure .scansign exists
+	mkdir -p /home/${USER}/.scansign/
+	mkdir -p /home/${USER}/.local/share/nautilus/scripts/
+
+	# with appropiate permissions
+	chown ${USER}:${USER} /home/${USER}/.scansign/
+	chown ${USER}:${USER} /home/${USER}/.local/share/nautilus/scripts/
+
+	# copy what we need
+	cp /etc/skel/.local/share/nautilus/scripts/ScanSign /home/${USER}/.local/share/nautilus/scripts/
+	cp /etc/skel/.scansign/signature.png /home/${USER}/.scansign/
+
+	# with appropiate permissions
+	chown ${USER}:${USER} /home/${USER}/.local/share/nautilus/scripts/ScanSign
+	chown ${USER}:${USER} /home/${USER}/.scansign/signature.png
+	chmod +x /home/${USER}/.local/share/nautilus/scripts/ScanSign
+done

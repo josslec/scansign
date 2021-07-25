@@ -1,0 +1,33 @@
+{
+    "name": "gabrielrcouto/php-gui",
+    "description": "Extensionless PHP Graphic User Interface library",
+    "keywords": ["php","gui","graphic","interface"],
+    "homepage": "http://github.com/gabrielrcouto/php-gui",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabriel Rodrigues Couto",
+            "email": "gabrielrcouto@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "react/child-process": "^0.4.0"
+    },
+    "require-dev" : {
+        "phing/phing": "2.*",
+        "phpunit/phpunit": "^4.8.35",
+        "squizlabs/php_codesniffer": "2.0.*@dev",
+        "evert/phpdoc-md" : "~0.2.0",
+        "phpdocumentor/phpdocumentor": "^2.8"
+    },
+    "config" : {
+        "bin-dir" : "bin/"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gui\\": "src/",
+            "Test\\": "test/"
+        }
+    }
+}
